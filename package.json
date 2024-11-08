@@ -1,0 +1,17 @@
+{
+  "name": "weather-app-alexandra-riva",
+  "version": "1.0.0",
+  "description": "A minimalistic weather app",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1"
+  }
+}
