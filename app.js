@@ -1,27 +1,33 @@
-require("dotenv").config();
-const express = require("express");
-const axios = require("axios");
-
+require('dotenv').config();
+const express = require('express');
+const axios = require('axios');
+const path = require('path');
 const app = express();
-const PORT = 3000;
 
-app.use(express.static("public"));
-app.use(express.json());
+const API_KEY = process.env.API_KEY;  
+const API_DOMAIN = "https://weather.visualcrossing.com";
+const API_PATH = "/VisualCrossingWebServices/rest/services/timeline/";
 
-app.get("/weather", async (req, res) => {
+app.use(express.static(path.join(__dirname, 'public')));  
+
+app.get('/weather', async (req, res) => {
   const city = req.query.city;
-  const apiKey = process.env.API_KEY;
-  const apiUrl = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}?include=fcst,obs,histfcst,stats,days,hours,current,alerts&key=${apiKey}&contentType=json`;
+  if (!city) return res.status(400).json({ message: 'City is required' });
 
   try {
-    const response = await axios.get(apiUrl);
-    res.json(response.data);
+    const response = await axios.get(`${API_DOMAIN}${API_PATH}${city}`, {
+      params: {
+        unitGroup: 'metric',
+        key: API_KEY,
+        contentType: 'json'
+      }
+    });
+    res.json(response.data);  
   } catch (error) {
-    console.error("Error fetching weather data:", error);
-    res.status(500).json({ error: "Failed to fetch weather data" });
+    console.error(error);
+    res.status(500).json({ message: 'Error fetching weather data' });
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server running at http://localhost:${PORT}`);
-});
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}`));
