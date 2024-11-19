@@ -1,16 +1,18 @@
 {
-  "name": "weather-app-alexandra-riva",
+  "name": "weather-app-alexandra-riva-public",
   "version": "1.0.0",
   "description": "A minimalistic weather app",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "serve": "webpack serve"
+    "serve": "webpack serve",
+    "deploy": "gh-pages -d public"
   },
   "dependencies": {
     "axios": "^1.7.7",
     "dotenv": "^16.4.5",
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "gh-pages": "^6.2.0"
   },
   "devDependencies": {
     "webpack": "^5.88.2",
