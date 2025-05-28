@@ -2,13 +2,16 @@ require('dotenv').config();
 const express = require('express');
 const axios = require('axios');
 const path = require('path');
-const app = express();
+const cors = require('cors'); // <-- ADD THIS
 
-const API_KEY = process.env.API_KEY;  
+const app = express();
+app.use(cors()); // <-- ADD THIS
+
+const API_KEY = process.env.API_KEY;
 const API_DOMAIN = "https://weather.visualcrossing.com";
 const API_PATH = "/VisualCrossingWebServices/rest/services/timeline/";
 
-app.use(express.static(path.join(__dirname, 'public')));  
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/weather', async (req, res) => {
   const city = req.query.city;
@@ -22,7 +25,7 @@ app.get('/weather', async (req, res) => {
         contentType: 'json'
       }
     });
-    res.json(response.data);  
+    res.json(response.data);
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Error fetching weather data' });
