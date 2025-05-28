@@ -10,7 +10,7 @@ A minimalistic and responsive weather application where users can search for rea
 
 * HTML5
 * CSS3
-* Vanilla JavaScript
+* JavaScript
 * [Netlify](https://netlify.com/) for frontend deployment
 
 ### Backend:
