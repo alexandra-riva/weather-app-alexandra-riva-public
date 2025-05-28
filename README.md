@@ -1,4 +1,4 @@
-# Weather App – Alexandra Riva
+# Weather App
 
 A minimalistic and responsive weather application where users can search for real-time weather data by city. Built using **HTML**, **CSS**, and **JavaScript**, with a backend powered by **Node.js**, **Express**, and **Axios**, connected to the **Visual Crossing Weather API**.
 
@@ -28,7 +28,7 @@ A minimalistic and responsive weather application where users can search for rea
 Try it here:
 **[https://weather-app-alexandra-riva.netlify.app](https://weather-app-alexandra-riva.netlify.app)**
 
-> ⚠Please wait a few seconds after clicking "Get Weather" — the backend is hosted on **Render's free tier**, which may take a few seconds to wake up.
+> Please wait a few seconds after clicking "Get Weather" — the backend is hosted on **Render's free tier**, which may take a few seconds to wake up.
 
 ---
 
