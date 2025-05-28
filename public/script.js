@@ -8,7 +8,7 @@ document.getElementById("getWeather").addEventListener("click", async () => {
   }
 
   try {
-    const response = await fetch(`/weather?city=${city}`);
+    const response = await fetch(`https://weather-app-alexandra-riva-public.onrender.com/weather?city=${encodeURIComponent(city)}`);
     if (!response.ok) throw new Error("Failed to fetch weather data");
 
     const weatherData = await response.json();
